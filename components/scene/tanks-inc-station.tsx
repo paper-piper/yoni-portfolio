@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import { useFrame } from "@react-three/fiber"
 import { TextureLoader, DoubleSide } from "three"
 import type { Mesh, Group, Texture } from "three"
+import { getPublicPath } from "@/lib/public-path"
 
 interface TanksIncStationProps {
   scrollOffset: () => number
@@ -17,7 +18,7 @@ function TankSprite() {
   useEffect(() => {
     const loader = new TextureLoader()
     loader.load(
-      "/textures/tanksinc-tank.png",
+      getPublicPath("/textures/tanksinc-tank.png"),
       (loadedTexture) => {
         setTexture(loadedTexture)
       },
@@ -75,7 +76,7 @@ function AnimatedCannonball({ scrollOffset }: { scrollOffset: () => number }) {
   useEffect(() => {
     const loader = new TextureLoader()
     loader.load(
-      "/textures/tanksinc-cannonball.png",
+      getPublicPath("/textures/tanksinc-cannonball.png"),
       (loadedTexture) => {
         setTexture(loadedTexture)
       },
@@ -150,7 +151,7 @@ function FloorPlane() {
   useEffect(() => {
     const loader = new TextureLoader()
     loader.load(
-      "/textures/tanksinc-floor.png",
+      getPublicPath("/textures/tanksinc-floor.png"),
       (loadedTexture) => {
         loadedTexture.wrapS = loadedTexture.wrapT = 1000 // RepeatWrapping
         loadedTexture.repeat.set(4, 4)
