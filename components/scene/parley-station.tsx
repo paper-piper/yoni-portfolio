@@ -5,6 +5,7 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { RoundedBox, Html } from "@react-three/drei"
 import { TextureLoader } from "three"
 import type { Mesh, Group, Texture } from "three"
+import { getPublicPath } from "@/lib/public-path"
 
 function PhoneScreen() {
   const [texture, setTexture] = useState<Texture | null>(null)
@@ -12,7 +13,7 @@ function PhoneScreen() {
   useEffect(() => {
     const loader = new TextureLoader()
     loader.load(
-      "/textures/parley-screen.png",
+      getPublicPath("/textures/parley-screen.png"),
       (loadedTexture) => {
         setTexture(loadedTexture)
       },
